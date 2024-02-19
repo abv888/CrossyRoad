@@ -29,7 +29,7 @@ class CarManager:
     def level_up(self):
         self.car_speed += MOVE_INCREMENT
 
-    def reset(self):
+    def reset_manager(self):
         for car in self.cars:
             car.goto(100000, 100000)
         self.cars.clear()

@@ -27,9 +27,9 @@ while game_is_on:
     car_manager.move_cars()
 
     if car_manager.detect_collision(player):
-        scoreboard.reset()
+        scoreboard.reset_scoreboard()
         player.go_to_start()
-        car_manager.reset()
+        car_manager.reset_manager()
 
     if player.is_at_finish():
         player.go_to_start()
