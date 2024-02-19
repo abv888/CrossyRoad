@@ -11,6 +11,9 @@ screen.tracer(0)
 player = Player()
 car_manager = CarManager()
 
+current_level = 0
+record = 0
+
 game_is_on = True
 
 screen.listen()
@@ -23,3 +26,12 @@ while game_is_on:
 
     car_manager.create_car()
     car_manager.move_cars()
+
+    if car_manager.detect_collision(player):
+        game_is_on = False
+
+    if player.is_at_finish():
+        player.go_to_start()
+
+
+screen.exitonclick()
