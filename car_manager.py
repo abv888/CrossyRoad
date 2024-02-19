@@ -28,3 +28,9 @@ class CarManager:
 
     def level_up(self):
         self.car_speed += MOVE_INCREMENT
+
+    def reset(self):
+        for car in self.cars:
+            car.goto(100000, 100000)
+        self.cars.clear()
+        self.car_speed = STARING_MOVE_DISTANCE
