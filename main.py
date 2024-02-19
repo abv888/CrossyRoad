@@ -2,6 +2,7 @@ import time
 from turtle import Screen
 from player import Player
 from car_manager import CarManager
+from scoreboard import Scoreboard
 
 
 screen = Screen()
@@ -10,9 +11,7 @@ screen.tracer(0)
 
 player = Player()
 car_manager = CarManager()
-
-current_level = 0
-record = 0
+scoreboard = Scoreboard()
 
 game_is_on = True
 
@@ -29,9 +28,12 @@ while game_is_on:
 
     if car_manager.detect_collision(player):
         game_is_on = False
+        scoreboard.game_over()
 
     if player.is_at_finish():
         player.go_to_start()
+        car_manager.level_up()
+        scoreboard.increase_level()
 
 
 screen.exitonclick()

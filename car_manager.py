@@ -9,20 +9,22 @@ MOVE_INCREMENT = 10
 class CarManager:
     def __init__(self):
         self.cars = []
+        self.car_speed = STARING_MOVE_DISTANCE
 
     def create_car(self):
-        random_chance = random.randint(1, 6)
+        random_chance = random.randint(1, 5)
         if random_chance == 1:
             new_car = Car()
             self.cars.append(new_car)
 
     def move_cars(self):
         for car in self.cars:
-            car.backward(STARING_MOVE_DISTANCE)
+            car.backward(self.car_speed)
 
     def detect_collision(self, player):
         for car in self.cars:
             if car.distance(player) < 20:
-                print("COLLISION")
                 return True
 
+    def level_up(self):
+        self.car_speed += MOVE_INCREMENT
